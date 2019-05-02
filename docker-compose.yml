@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  proxy:
+    image: traefik:latest
+    container_name: traefik
+    restart: always
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik.toml:/traefik.toml"
+      - "tmp:/tmp"
+
+volumes:
+  tmp:
